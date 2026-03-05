@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Omnes Education — Schémas Fonctionnels</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f2f5;
+    color: #1a1a2e;
+    padding: 32px 24px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .subtitle {
+    text-align: center;
+    color: #6b7280;
+    font-size: 13px;
+    margin-bottom: 36px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #6b7280;
+    margin-bottom: 16px;
+    margin-top: 36px;
+  }
+
+  /* ── SCHEMA 1 : Architecture flux de données ── */
+  .arch-grid {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr 60px 1fr 60px 1fr;
+    align-items: center;
+    gap: 0;
+    background: white;
+    border-radius: 16px;
+    padding: 28px 20px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  }
+  .arch-col {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .arch-col-title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #9ca3af;
+    text-align: center;
+    margin-bottom: 4px;
+  }
+  .source-box {
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.3;
+  }
+  .src-geo    { background:#ede9fe; color:#6d28d9; border:1.5px solid #c4b5fd; }
+  .src-repute { background:#e0f2fe; color:#0284c7; border:1.5px solid #7dd3fc; }
+  .src-social { background:#d1fae5; color:#065f46; border:1.5px solid #6ee7b7; }
+  .src-ads    { background:#fef3c7; color:#92400e; border:1.5px solid #fcd34d; }
+  .src-manual { background:#fee2e2; color:#991b1b; border:1.5px solid #fca5a5; }
+  .layer-box {
+    border-radius: 10px;
+    padding: 14px 10px;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.5;
+  }
+  .layer-collect { background:#f0f9ff; color:#0369a1; border:2px solid #7dd3fc; }
+  .layer-process { background:#fdf4ff; color:#7e22ce; border:2px solid #d8b4fe; }
+  .layer-dash    { background:#1a1a2e; color:white; border:2px solid #374151; }
+  .layer-dash .dash-sub { font-size:10px; color:#9ca3af; font-weight:400; margin-top:4px; }
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #d1d5db;
+  }
+
+  /* ── SCHEMA 2 : Modules & données ── */
+  .modules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .module-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    border-top: 4px solid;
+  }
+  .module-card.geo    { border-color: #7c3aed; }
+  .module-card.repute { border-color: #0284c7; }
+  .module-card.social { border-color: #059669; }
+  .module-card.perf   { border-color: #d97706; }
+  .module-card .mod-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .module-card.geo    .mod-title { color:#7c3aed; }
+  .module-card.repute .mod-title { color:#0284c7; }
+  .module-card.social .mod-title { color:#059669; }
+  .module-card.perf   .mod-title { color:#d97706; }
+  .module-card .mod-sub {
+    font-size: 10px;
+    color: #9ca3af;
+    margin-bottom: 14px;
+  }
+  .data-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    font-size: 11px;
+    color: #374151;
+    margin-bottom: 7px;
+    line-height: 1.4;
+  }
+  .data-item .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+  .geo    .dot { background:#7c3aed; }
+  .repute .dot { background:#0284c7; }
+  .social .dot { background:#059669; }
+  .perf   .dot { background:#d97706; }
+  .mod-source {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #f3f4f6;
+    font-size: 10px;
+    color: #9ca3af;
+  }
+  .mod-source strong { color:#6b7280; }
+
+  /* ── SCHEMA 3 : Options tarifaires ── */
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .option-card {
+    background: white;
+    border-radius: 14px;
+    padding: 22px 18px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    position: relative;
+    border: 2px solid #e5e7eb;
+  }
+  .option-card.recommended {
+    border-color: #7c3aed;
+    background: #fdf9ff;
+  }
+  .badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #7c3aed;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .opt-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #9ca3af;
+    margin-bottom: 4px;
+  }
+  .opt-name {
+    font-size: 16px;
+    font-weight: 800;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+  }
+  .opt-price {
+    font-size: 26px;
+    font-weight: 800;
+    color: #7c3aed;
+    margin: 10px 0 4px;
+  }
+  .opt-price span { font-size: 13px; color: #9ca3af; font-weight: 500; }
+  .opt-delay {
+    font-size: 11px;
+    color: #6b7280;
+    margin-bottom: 14px;
+  }
+  .opt-feature {
+    font-size: 11px;
+    color: #374151;
+    margin-bottom: 6px;
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .opt-feature::before { content: "✓"; color: #059669; font-weight: 700; flex-shrink:0; }
+  .opt-feature.extra::before { content: "+"; color: #7c3aed; font-weight: 700; }
+
+  /* ── SCHEMA 4 : Planning ── */
+  .planning-wrap {
+    background: white;
+    border-radius: 14px;
+    padding: 24px 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .gantt-row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 12px;
+  }
+  .gantt-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #374151;
+    text-align: right;
+  }
+  .gantt-bar-wrap {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 2px;
+    height: 28px;
+  }
+  .gantt-bar {
+    border-radius: 4px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.3px;
+  }
+  .gantt-header {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .gantt-weeks {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 2px;
+  }
+  .gantt-week-label {
+    font-size: 8px;
+    color: #9ca3af;
+    text-align: center;
+    font-weight: 600;
+  }
+  .g-cadrage { background: #94a3b8; }
+  .g-geo     { background: #7c3aed; }
+  .g-repute  { background: #0284c7; }
+  .g-social  { background: #059669; }
+  .g-perf    { background: #d97706; }
+  .g-dash    { background: #1a1a2e; }
+  .g-deploy  { background: #0369a1; }
+  .g-buffer  { background: #e5e7eb; }
+  .gantt-empty { background: transparent; }
+
+  /* ── SCHEMA 5 : Couverture des données ── */
+  .coverage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .coverage-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .cov-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #f3f4f6;
+  }
+  .cov-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: #374151;
+    margin-bottom: 8px;
+  }
+  .cov-tag {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    flex-shrink: 0;
+  }
+  .tag-native  { background:#ede9fe; color:#7c3aed; }
+  .tag-api     { background:#d1fae5; color:#065f46; }
+  .tag-manual  { background:#fef3c7; color:#92400e; }
+  .tag-custom  { background:#fee2e2; color:#991b1b; }
+
+  footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 11px;
+    color: #9ca3af;
+  }
+</style>
+</head>
+<body>
+
+<h1>Omnes Education — Plateforme de Monitoring Unifiée</h1>
+<p class="subtitle">Schémas fonctionnels · Mars 2026 · Inkriz</p>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SCHEMA 1 : Modules & données             -->
+<!-- ════════════════════════════════════════ -->
+<div class="section-title">① Modules fonctionnels & données monitorées</div>
+<div class="modules-grid">
+
+  <!-- Module GEO -->
+  <div class="module-card geo">
+    <div class="mod-title">Module 1 — Visibilité IA / GEO</div>
+    <div class="mod-sub">Moteur de monitoring GEO propriétaire</div>
+    <div class="data-item"><span class="dot"></span><strong>Share of Voice</strong> — Omnes vs concurrents dans les LLMs (%)</div>
+    <div class="data-item"><span class="dot"></span><strong>Sentiment</strong> — Score 0–100 sur les réponses IA</div>
+    <div class="data-item"><span class="dot"></span><strong>Geo</strong> — Visibilité par zone géographique</div>
+    <div class="data-item"><span class="dot"></span><strong>Sources</strong> — Domaines cités (media / instit / blog)</div>
+    <div class="data-item"><span class="dot"></span><strong>Keywords / Clusters</strong> — Perf par mot-clé + évolution</div>
+    <div class="data-item"><span class="dot"></span><strong>Concurrents</strong> — Mentions dans les réponses IA</div>
+    <div class="data-item"><span class="dot"></span><strong>Bot visits / page</strong> — Crawls IA sur les sites Omnes</div>
+    <div class="data-item"><span class="dot"></span><strong>Prompts</strong> — Requêtes TOFU / MOFU / BOFU</div>
+    <div class="mod-source"><strong>Sources :</strong> Moteur GEO (ChatGPT, Perplexity, AI Overviews, Claude…)</div>
+  </div>
+
+  <!-- Module Réputation -->
+  <div class="module-card repute">
+    <div class="mod-title">Module 2 — Automatisation Réputation</div>
+    <div class="mod-sub">Pipeline avis · Reddit Q&A · Interface modération & réponses IA</div>
+    <div class="data-item"><span class="dot"></span><strong>Google Avis</strong> — Collecte, score moyen, évolution par école</div>
+    <div class="data-item"><span class="dot"></span><strong>Trustpilot</strong> — Volume, rating, verbatims récents</div>
+    <div class="data-item"><span class="dot"></span><strong>Diplomeo / Custplace</strong> — Agrégation avis secteur ESR</div>
+    <div class="data-item"><span class="dot"></span><strong>Reddit Q&A</strong> — Détection questions/mentions par école</div>
+    <div class="data-item"><span class="dot"></span><strong>Interface de modération</strong> — Flag des avis par plateforme directement dans le dashboard</div>
+    <div class="data-item"><span class="dot"></span><strong>Réponses pré-générées</strong> — Suggestions de réponse par LLM, envoi depuis la plateforme</div>
+    <div class="data-item"><span class="dot"></span><strong>Score réputation</strong> — Agrégat multi-plateforme par entité</div>
+    <div class="mod-source"><strong>Sources :</strong> Google Places API, Trustpilot API, scraping Diplomeo/Custplace, Reddit API</div>
+  </div>
+
+  <!-- Module Perf -->
+  <div class="module-card perf">
+    <div class="mod-title">Module 3 — Performance Marketing</div>
+    <div class="mod-sub">GA4 · Google Ads · Meta Ads · Saisie interne</div>
+    <div class="data-item"><span class="dot"></span><strong>Visites humaines</strong> — Trafic par site (sessions, pages vues)</div>
+    <div class="data-item"><span class="dot"></span><strong>Budget</strong> — Saisie manuelle ou import CSV par période</div>
+    <div class="data-item"><span class="dot"></span><strong>Google Ads</strong> — CPC, impressions, conversions, ROAS</div>
+    <div class="data-item"><span class="dot"></span><strong>Meta Ads</strong> — CPC, reach, CPL, taux de conversion</div>
+    <div class="data-item"><span class="dot"></span><strong>Salons</strong> — Présences, leads générés, ROI estimé</div>
+    <div class="mod-source"><strong>Sources :</strong> Google Analytics 4, Google Ads API, Meta Ads API, saisie interne</div>
+  </div>
+
+  <!-- Module Social -->
+  <div class="module-card social">
+    <div class="mod-title">Module 4 — Social Media</div>
+    <div class="mod-sub">APIs Meta · LinkedIn · TikTok · Google Trends</div>
+    <div class="data-item"><span class="dot"></span><strong>Publications</strong> — Volume, fréquence, contenu par réseau</div>
+    <div class="data-item"><span class="dot"></span><strong>Performance réseaux</strong> — Reach, engagement, followers</div>
+    <div class="data-item"><span class="dot"></span><strong>Facebook / Instagram</strong> — Métriques Meta Graph API</div>
+    <div class="data-item"><span class="dot"></span><strong>LinkedIn</strong> — Impressions, clics, followers page</div>
+    <div class="data-item"><span class="dot"></span><strong>TikTok</strong> — Vues, engagement, croissance</div>
+    <div class="data-item"><span class="dot"></span><strong>Tendances</strong> — Hashtags & sujets émergents ESR</div>
+    <div class="mod-source"><strong>Sources :</strong> Meta Graph API, LinkedIn API, TikTok API, Google Trends</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SCHEMA 2 : Options tarifaires            -->
+<!-- ════════════════════════════════════════ -->
+<div class="section-title">② Options & tarifs</div>
+<div class="options-grid">
+
+  <div class="option-card">
+    <div class="opt-label">Proposition initiale</div>
+    <div class="opt-name">GEO + Réputation</div>
+    <div class="opt-price">25 000 €<span> HT</span></div>
+    <div class="opt-delay">⏱ 2 semaines</div>
+    <div class="opt-feature">Module 1 — Visibilité IA / GEO complet</div>
+    <div class="opt-feature">Module 2 — Pipeline avis Google, Trustpilot, Diplomeo</div>
+    <div class="opt-feature">Système Reddit Q&A + interface de modération</div>
+    <div class="opt-feature">Dashboard SoV, Sentiment, Score réputation</div>
+    <div class="opt-feature">Filtres école / période / keyword</div>
+    <div class="opt-feature">Export CSV</div>
+  </div>
+
+  <div class="option-card recommended">
+    <div class="badge">Recommandée</div>
+    <div class="opt-label">Proposition secondaire</div>
+    <div class="opt-name">GEO + Réputation + Performance</div>
+    <div class="opt-price">36 000 €<span> HT</span></div>
+    <div class="opt-delay">⏱ 1 mois</div>
+    <div class="opt-feature">Modules 1 + 2 + 3</div>
+    <div class="opt-feature">Infrastructure cloud complète</div>
+    <div class="opt-feature">Dashboard unifié multi-écoles</div>
+    <div class="opt-feature">Alertes email</div>
+    <div class="opt-feature">Export PDF / CSV + rapports auto</div>
+    <div class="opt-feature">2 sessions de formation incluses</div>
+  </div>
+
+  <div class="option-card">
+    <div class="opt-label">Plateforme complète</div>
+    <div class="opt-name">Plateforme + IA Analytique</div>
+    <div class="opt-price">46 000 €<span> HT</span></div>
+    <div class="opt-delay">⏱ 1,5 mois</div>
+    <div class="opt-feature">Modules 1 + 2 + 3 + 4</div>
+    <div class="opt-feature extra">Résumés hebdo générés par LLM</div>
+    <div class="opt-feature extra">Détection d'anomalies automatique</div>
+    <div class="opt-feature extra">Recommandations contenu IA</div>
+    <div class="opt-feature extra">Scoring priorité actions marketing</div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SCHEMA 3 : Architecture flux de données  -->
+<!-- ════════════════════════════════════════ -->
+<div class="section-title">③ Architecture — Flux de données</div>
+<div class="arch-grid">
+
+  <div class="arch-col">
+    <div class="arch-col-title">Sources</div>
+    <div class="source-box src-geo">Moteur GEO<br>IA Visibility</div>
+    <div class="source-box src-repute">Google · Trustpilot<br>Diplomeo · Reddit</div>
+    <div class="source-box src-social">Meta · LinkedIn<br>TikTok · Trends</div>
+    <div class="source-box src-ads">Google Analytics<br>Google Ads · Meta Ads</div>
+    <div class="source-box src-manual">Budget · Salons<br>Saisie manuelle</div>
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="arch-col">
+    <div class="arch-col-title">Collecte</div>
+    <div class="layer-box layer-collect" style="height:100%">
+      Connexions automatiques<br>
+      <span style="font-size:10px;color:#0369a1">Branchement sécurisé aux plateformes</span><br><br>
+      Mise à jour planifiée<br>
+      <span style="font-size:10px;color:#0369a1">Données fraîches chaque nuit</span><br><br>
+      Mémoire rapide<br>
+      <span style="font-size:10px;color:#0369a1">Accès instantané aux KPIs clés</span>
+    </div>
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="arch-col">
+    <div class="arch-col-title">Traitement</div>
+    <div class="layer-box layer-process" style="height:100%">
+      Historique des données<br>
+      <span style="font-size:10px;color:#a855f7">Suivi dans le temps par école</span><br><br>
+      Unification des sources<br>
+      <span style="font-size:10px;color:#a855f7">Un seul format, toutes plateformes</span><br><br>
+      Détection automatique<br>
+      <span style="font-size:10px;color:#a855f7">Alerte si chute ou anomalie</span>
+    </div>
+  </div>
+
+  <div class="arrow">→</div>
+
+  <div class="arch-col">
+    <div class="arch-col-title">Dashboard</div>
+    <div class="layer-box layer-dash" style="height:100%">
+      <div style="font-size:13px;font-weight:800;margin-bottom:10px;letter-spacing:0.3px">Omnes Dashboard</div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:5px 8px;font-size:10px;color:#e5e7eb">🏫 &nbsp;Vue par école ou globale</div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:5px 8px;font-size:10px;color:#e5e7eb">📊 &nbsp;Graphiques & tendances</div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:5px 8px;font-size:10px;color:#e5e7eb">🔔 &nbsp;Alertes en temps réel</div>
+        <div style="background:rgba(255,255,255,0.08);border-radius:6px;padding:5px 8px;font-size:10px;color:#e5e7eb">📥 &nbsp;Export PDF / CSV</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SCHEMA 4 : Planning                      -->
+<!-- ════════════════════════════════════════ -->
+<div class="section-title">④ Planning indicatif — Plateforme complète (6 semaines)</div>
+<div class="planning-wrap">
+
+  <!-- Jalons -->
+  <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;margin-bottom:6px;">
+    <div></div>
+    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:2px;">
+      <div style="grid-column:1/3;text-align:center;font-size:9px;font-weight:700;color:#7c3aed;border-bottom:2px solid #7c3aed;padding-bottom:2px;">Prop. 1 · S2</div>
+      <div style="grid-column:3/5;text-align:center;font-size:9px;font-weight:700;color:#0284c7;border-bottom:2px solid #0284c7;padding-bottom:2px;">Prop. 2 · S4</div>
+      <div style="grid-column:5/7;text-align:center;font-size:9px;font-weight:700;color:#d97706;border-bottom:2px solid #d97706;padding-bottom:2px;">Prop. 3 · S6</div>
+    </div>
+  </div>
+
+  <div class="gantt-header">
+    <div></div>
+    <div class="gantt-weeks" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-week-label">S1</div>
+      <div class="gantt-week-label">S2</div>
+      <div class="gantt-week-label">S3</div>
+      <div class="gantt-week-label">S4</div>
+      <div class="gantt-week-label">S5</div>
+      <div class="gantt-week-label">S6</div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Cadrage & Architecture</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-bar g-cadrage" style="grid-column:1/2"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:2/7"></div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Module 1 — GEO / Visibilité IA</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-bar g-geo" style="grid-column:1/3"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:3/7"></div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Module 2 — Réputation</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-bar g-repute" style="grid-column:1/3"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:3/7"></div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Module 3 — Performance Mkt</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/2"></div>
+      <div class="gantt-bar g-perf" style="grid-column:2/5"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:5/7"></div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Module 4 — Social Media</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/4"></div>
+      <div class="gantt-bar g-social" style="grid-column:4/6"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:6/7"></div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Dashboard, alertes, recette</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/3"></div>
+      <div class="gantt-bar g-dash" style="grid-column:3/6"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:6/7"></div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Déploiement & Formation</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/5"></div>
+      <div class="gantt-bar g-deploy" style="grid-column:5/7"></div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;justify-content:center;">
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#94a3b8"></div>Cadrage</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#7c3aed"></div>GEO</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#0284c7"></div>Réputation</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#059669"></div>Social</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#d97706"></div>Perf. Mkt</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#1a1a2e"></div>Dashboard</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#0369a1"></div>Deploy</div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════ -->
+<!-- SCHEMA 5 : Couverture besoins client     -->
+<!-- ════════════════════════════════════════ -->
+<div class="section-title">⑤ Couverture des besoins clients</div>
+<div class="coverage-grid">
+
+  <div class="coverage-card">
+    <div class="cov-title">🟣 Module GEO — Visibilité IA</div>
+    <div class="cov-item"><span>Share of Voice</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Sentiment</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Geo (ventilation géo)</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Source (domaines cités)</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Cluster / Keywords</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Concurrents dans les IA</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Bot visits par page</span><span class="cov-tag tag-native">Natif</span></div>
+  </div>
+
+  <div class="coverage-card">
+    <div class="cov-title">🔵 Module Réputation</div>
+    <div class="cov-item"><span>Pipeline avis Google</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>Trustpilot</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>Diplomeo / Custplace</span><span class="cov-tag tag-custom">Scraping</span></div>
+    <div class="cov-item"><span>Reddit Q&A (mentions)</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>Interface modération (flag avis)</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Réponses pré-générées (LLM)</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-item"><span>Score réputation agrégé</span><span class="cov-tag tag-native">Natif</span></div>
+  </div>
+
+  <div class="coverage-card">
+    <div class="cov-title">🟡 Module Performance Marketing</div>
+    <div class="cov-item"><span>Visites humaines par site</span><span class="cov-tag tag-api">GA4 API</span></div>
+    <div class="cov-item"><span>Ads (Google + Meta)</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>Budget par période</span><span class="cov-tag tag-manual">Manuel / CSV</span></div>
+    <div class="cov-item"><span>Salons (présences, leads)</span><span class="cov-tag tag-manual">Manuel / CSV</span></div>
+  </div>
+
+  <div class="coverage-card">
+    <div class="cov-title">🟢 Module Social Media</div>
+    <div class="cov-item"><span>Publications (volume, contenu)</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>Performance réseaux sociaux</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>Tendances secteur ESR</span><span class="cov-tag tag-api">API tierce</span></div>
+  </div>
+
+
+</div>
+
+<footer>
+  Omnes Education · Plateforme de Monitoring Unifiée · Proposition confidentielle · Mars 2026 · Inkriz
+</footer>
+
+</body>
+</html>
