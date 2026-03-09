@@ -349,7 +349,8 @@
   <!-- Module GEO -->
   <div class="module-card geo">
     <div class="mod-title">Module 1 — Visibilité IA / GEO</div>
-    <div class="mod-sub">Moteur de monitoring GEO propriétaire</div>
+    <div class="mod-sub">Intégration aux dashboards GEO existants d'Omnes Education</div>
+    <div class="data-item"><span class="dot"></span><strong>Connexion API / webhooks</strong> — Branchement sur les dashboards GEO déjà opérationnels</div>
     <div class="data-item"><span class="dot"></span><strong>Share of Voice</strong> — Omnes vs concurrents dans les LLMs (%)</div>
     <div class="data-item"><span class="dot"></span><strong>Sentiment</strong> — Score 0–100 sur les réponses IA</div>
     <div class="data-item"><span class="dot"></span><strong>Geo</strong> — Visibilité par zone géographique</div>
@@ -358,7 +359,7 @@
     <div class="data-item"><span class="dot"></span><strong>Concurrents</strong> — Mentions dans les réponses IA</div>
     <div class="data-item"><span class="dot"></span><strong>Bot visits / page</strong> — Crawls IA sur les sites Omnes</div>
     <div class="data-item"><span class="dot"></span><strong>Prompts</strong> — Requêtes TOFU / MOFU / BOFU</div>
-    <div class="mod-source"><strong>Sources :</strong> Moteur GEO (ChatGPT, Perplexity, AI Overviews, Claude…)</div>
+    <div class="mod-source"><strong>Source :</strong> Dashboards GEO existants du client — aucun moteur redéveloppé from scratch</div>
   </div>
 
   <!-- Module Réputation -->
@@ -390,14 +391,15 @@
   <!-- Module Social -->
   <div class="module-card social">
     <div class="mod-title">Module 4 — Social Media</div>
-    <div class="mod-sub">APIs Meta · LinkedIn · TikTok · Google Trends</div>
+    <div class="mod-sub">APIs Meta · LinkedIn · TikTok · YouTube · Google Trends</div>
     <div class="data-item"><span class="dot"></span><strong>Publications</strong> — Volume, fréquence, contenu par réseau</div>
     <div class="data-item"><span class="dot"></span><strong>Performance réseaux</strong> — Reach, engagement, followers</div>
     <div class="data-item"><span class="dot"></span><strong>Facebook / Instagram</strong> — Métriques Meta Graph API</div>
     <div class="data-item"><span class="dot"></span><strong>LinkedIn</strong> — Impressions, clics, followers page</div>
     <div class="data-item"><span class="dot"></span><strong>TikTok</strong> — Vues, engagement, croissance</div>
+    <div class="data-item"><span class="dot"></span><strong>YouTube</strong> — Abonnés, vues, durée de visionnage, engagement, performance par vidéo & par école</div>
     <div class="data-item"><span class="dot"></span><strong>Tendances</strong> — Hashtags & sujets émergents ESR</div>
-    <div class="mod-source"><strong>Sources :</strong> Meta Graph API, LinkedIn API, TikTok API, Google Trends</div>
+    <div class="mod-source"><strong>Sources :</strong> Meta Graph API, LinkedIn API, TikTok API, YouTube Data API v3, Google Trends</div>
   </div>
 
 </div>
@@ -409,42 +411,41 @@
 <div class="options-grid">
 
   <div class="option-card">
-    <div class="opt-label">Proposition initiale</div>
+    <div class="opt-label">Option A — Socle fondamental</div>
     <div class="opt-name">GEO + Réputation</div>
-    <div class="opt-price">25 000 €<span> HT</span></div>
-    <div class="opt-delay">⏱ 2 semaines</div>
-    <div class="opt-feature">Module 1 — Visibilité IA / GEO complet</div>
+    <div class="opt-price">18 000 €<span> HT</span></div>
+    <div class="opt-delay">⏱ 3 à 4 semaines · 18 jours</div>
+    <div class="opt-feature">Module 1 — Intégration dashboards GEO existants</div>
     <div class="opt-feature">Module 2 — Pipeline avis Google, Trustpilot, Diplomeo</div>
-    <div class="opt-feature">Système Reddit Q&A + interface de modération</div>
-    <div class="opt-feature">Dashboard SoV, Sentiment, Score réputation</div>
-    <div class="opt-feature">Filtres école / période / keyword</div>
-    <div class="opt-feature">Export CSV</div>
+    <div class="opt-feature">Reddit Q&A — détection mentions par école</div>
+    <div class="opt-feature">Score réputation agrégé multi-plateforme</div>
+    <div class="opt-feature">Dashboard unifié SoV, Sentiment, Réputation</div>
+    <div class="opt-feature">Filtres école / période · Export CSV</div>
   </div>
 
   <div class="option-card recommended">
     <div class="badge">Recommandée</div>
-    <div class="opt-label">Proposition secondaire</div>
-    <div class="opt-name">GEO + Réputation + Performance</div>
-    <div class="opt-price">36 000 €<span> HT</span></div>
-    <div class="opt-delay">⏱ 1 mois</div>
-    <div class="opt-feature">Modules 1 + 2 + 3</div>
-    <div class="opt-feature">Infrastructure cloud complète</div>
-    <div class="opt-feature">Dashboard unifié multi-écoles</div>
-    <div class="opt-feature">Alertes email</div>
-    <div class="opt-feature">Export PDF / CSV + rapports auto</div>
-    <div class="opt-feature">2 sessions de formation incluses</div>
+    <div class="opt-label">Option B — Plateforme Marketing</div>
+    <div class="opt-name">GEO + Réputation + Performance + Social</div>
+    <div class="opt-price">31 000 €<span> HT</span></div>
+    <div class="opt-delay">⏱ 6 à 8 semaines · 31 jours</div>
+    <div class="opt-feature">Modules 1 + 2 (Option A)</div>
+    <div class="opt-feature">Module 3 — GA4, Google Ads, Meta Ads, Salons</div>
+    <div class="opt-feature">Module 4 — Meta, LinkedIn, TikTok, Tendances ESR</div>
+    <div class="opt-feature">Dashboard enrichi multi-écoles + alertes email</div>
+    <div class="opt-feature">Export PDF / CSV + rapports automatiques</div>
   </div>
 
   <div class="option-card">
-    <div class="opt-label">Plateforme complète</div>
-    <div class="opt-name">Plateforme + IA Analytique</div>
-    <div class="opt-price">46 000 €<span> HT</span></div>
-    <div class="opt-delay">⏱ 1,5 mois</div>
-    <div class="opt-feature">Modules 1 + 2 + 3 + 4</div>
-    <div class="opt-feature extra">Résumés hebdo générés par LLM</div>
+    <div class="opt-label">Option C — Plateforme complète + IA</div>
+    <div class="opt-name">Plateforme B + YouTube + Couche IA Analytique</div>
+    <div class="opt-price">41 000 €<span> HT</span></div>
+    <div class="opt-delay">⏱ 2 à 3 mois · 40 jours</div>
+    <div class="opt-feature">Tout l'Option B</div>
+    <div class="opt-feature extra">YouTube Data API v3 — vues, abonnés, vidéos par école</div>
+    <div class="opt-feature extra">Résumés hebdomadaires générés par LLM</div>
     <div class="opt-feature extra">Détection d'anomalies automatique</div>
-    <div class="opt-feature extra">Recommandations contenu IA</div>
-    <div class="opt-feature extra">Scoring priorité actions marketing</div>
+    <div class="opt-feature extra">Recommandations contenu + scoring priorité</div>
   </div>
 
 </div>
@@ -457,9 +458,9 @@
 
   <div class="arch-col">
     <div class="arch-col-title">Sources</div>
-    <div class="source-box src-geo">Moteur GEO<br>IA Visibility</div>
+    <div class="source-box src-geo">Dashboards GEO<br>existants Omnes</div>
     <div class="source-box src-repute">Google · Trustpilot<br>Diplomeo · Reddit</div>
-    <div class="source-box src-social">Meta · LinkedIn<br>TikTok · Trends</div>
+    <div class="source-box src-social">Meta · LinkedIn<br>TikTok · YouTube · Trends</div>
     <div class="source-box src-ads">Google Analytics<br>Google Ads · Meta Ads</div>
     <div class="source-box src-manual">Budget · Salons<br>Saisie manuelle</div>
   </div>
@@ -512,98 +513,116 @@
 <!-- ════════════════════════════════════════ -->
 <!-- SCHEMA 4 : Planning                      -->
 <!-- ════════════════════════════════════════ -->
-<div class="section-title">④ Planning indicatif — Plateforme complète (6 semaines)</div>
+<div class="section-title">④ Planning indicatif — Option B · Plateforme Marketing (10 semaines)</div>
 <div class="planning-wrap">
 
   <!-- Jalons -->
   <div style="display:grid;grid-template-columns:180px 1fr;gap:12px;margin-bottom:6px;">
     <div></div>
-    <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:2px;">
-      <div style="grid-column:1/3;text-align:center;font-size:9px;font-weight:700;color:#7c3aed;border-bottom:2px solid #7c3aed;padding-bottom:2px;">Prop. 1 · S2</div>
-      <div style="grid-column:3/5;text-align:center;font-size:9px;font-weight:700;color:#0284c7;border-bottom:2px solid #0284c7;padding-bottom:2px;">Prop. 2 · S4</div>
-      <div style="grid-column:5/7;text-align:center;font-size:9px;font-weight:700;color:#d97706;border-bottom:2px solid #d97706;padding-bottom:2px;">Prop. 3 · S6</div>
+    <div style="display:grid;grid-template-columns:repeat(10,1fr);gap:2px;">
+      <div style="grid-column:1/3;text-align:center;font-size:9px;font-weight:700;color:#7c3aed;border-bottom:2px solid #7c3aed;padding-bottom:2px;">GEO · S2</div>
+      <div style="grid-column:3/5;text-align:center;font-size:9px;font-weight:700;color:#0284c7;border-bottom:2px solid #0284c7;padding-bottom:2px;">Réputation · S4</div>
+      <div style="grid-column:5/6;text-align:center;font-size:9px;font-weight:700;color:#d97706;border-bottom:2px solid #d97706;padding-bottom:2px;">Perf · S5</div>
+      <div style="grid-column:6/7;text-align:center;font-size:9px;font-weight:700;color:#059669;border-bottom:2px solid #059669;padding-bottom:2px;">Social · S6</div>
+      <div style="grid-column:7/9;text-align:center;font-size:9px;font-weight:700;color:#1a1a2e;border-bottom:2px solid #1a1a2e;padding-bottom:2px;">Dashboard · S8</div>
+      <div style="grid-column:9/11;text-align:center;font-size:9px;font-weight:700;color:#0369a1;border-bottom:2px solid #0369a1;padding-bottom:2px;">Deploy · S10</div>
     </div>
   </div>
 
   <div class="gantt-header">
     <div></div>
-    <div class="gantt-weeks" style="grid-template-columns:repeat(6,1fr);">
+    <div class="gantt-weeks" style="grid-template-columns:repeat(10,1fr);">
       <div class="gantt-week-label">S1</div>
       <div class="gantt-week-label">S2</div>
       <div class="gantt-week-label">S3</div>
       <div class="gantt-week-label">S4</div>
       <div class="gantt-week-label">S5</div>
       <div class="gantt-week-label">S6</div>
+      <div class="gantt-week-label">S7</div>
+      <div class="gantt-week-label">S8</div>
+      <div class="gantt-week-label">S9</div>
+      <div class="gantt-week-label">S10</div>
     </div>
   </div>
 
   <div class="gantt-row">
     <div class="gantt-label">Cadrage & Architecture</div>
-    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
       <div class="gantt-bar g-cadrage" style="grid-column:1/2"></div>
-      <div class="gantt-bar gantt-empty" style="grid-column:2/7"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:2/11"></div>
     </div>
   </div>
 
   <div class="gantt-row">
-    <div class="gantt-label">Module 1 — GEO / Visibilité IA</div>
-    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
-      <div class="gantt-bar g-geo" style="grid-column:1/3"></div>
-      <div class="gantt-bar gantt-empty" style="grid-column:3/7"></div>
+    <div class="gantt-label">Module 1 — GEO Intégration</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
+      <div class="gantt-bar g-geo" style="grid-column:2/3"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:3/11"></div>
     </div>
   </div>
 
   <div class="gantt-row">
     <div class="gantt-label">Module 2 — Réputation</div>
-    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
-      <div class="gantt-bar g-repute" style="grid-column:1/3"></div>
-      <div class="gantt-bar gantt-empty" style="grid-column:3/7"></div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/3"></div>
+      <div class="gantt-bar g-repute" style="grid-column:3/5"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:5/11"></div>
     </div>
   </div>
 
   <div class="gantt-row">
     <div class="gantt-label">Module 3 — Performance Mkt</div>
-    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
-      <div class="gantt-bar gantt-empty" style="grid-column:1/2"></div>
-      <div class="gantt-bar g-perf" style="grid-column:2/5"></div>
-      <div class="gantt-bar gantt-empty" style="grid-column:5/7"></div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/5"></div>
+      <div class="gantt-bar g-perf" style="grid-column:5/6"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:6/11"></div>
     </div>
   </div>
 
   <div class="gantt-row">
     <div class="gantt-label">Module 4 — Social Media</div>
-    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
-      <div class="gantt-bar gantt-empty" style="grid-column:1/4"></div>
-      <div class="gantt-bar g-social" style="grid-column:4/6"></div>
-      <div class="gantt-bar gantt-empty" style="grid-column:6/7"></div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/6"></div>
+      <div class="gantt-bar g-social" style="grid-column:6/7"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:7/11"></div>
     </div>
   </div>
 
   <div class="gantt-row">
     <div class="gantt-label">Dashboard, alertes, recette</div>
-    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
-      <div class="gantt-bar gantt-empty" style="grid-column:1/3"></div>
-      <div class="gantt-bar g-dash" style="grid-column:3/6"></div>
-      <div class="gantt-bar gantt-empty" style="grid-column:6/7"></div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/7"></div>
+      <div class="gantt-bar g-dash" style="grid-column:7/9"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:9/11"></div>
     </div>
   </div>
 
   <div class="gantt-row">
-    <div class="gantt-label">Déploiement & Formation</div>
-    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(6,1fr);">
-      <div class="gantt-bar gantt-empty" style="grid-column:1/5"></div>
-      <div class="gantt-bar g-deploy" style="grid-column:5/7"></div>
+    <div class="gantt-label">Déploiement & Documentation</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/9"></div>
+      <div class="gantt-bar g-deploy" style="grid-column:9/10"></div>
+      <div class="gantt-bar gantt-empty" style="grid-column:10/11"></div>
+    </div>
+  </div>
+
+  <div class="gantt-row">
+    <div class="gantt-label">Buffer corrections</div>
+    <div class="gantt-bar-wrap" style="grid-template-columns:repeat(10,1fr);">
+      <div class="gantt-bar gantt-empty" style="grid-column:1/10"></div>
+      <div class="gantt-bar g-buffer" style="grid-column:10/11"></div>
     </div>
   </div>
 
   <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap;justify-content:center;">
     <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#94a3b8"></div>Cadrage</div>
-    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#7c3aed"></div>GEO</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#7c3aed"></div>GEO Intégration</div>
     <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#0284c7"></div>Réputation</div>
-    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#059669"></div>Social</div>
     <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#d97706"></div>Perf. Mkt</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#059669"></div>Social Media</div>
     <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#1a1a2e"></div>Dashboard</div>
     <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#0369a1"></div>Deploy</div>
+    <div style="display:flex;align-items:center;gap:5px;font-size:10px;color:#6b7280"><div style="width:12px;height:12px;border-radius:3px;background:#e5e7eb;border:1px solid #d1d5db"></div>Buffer</div>
   </div>
 </div>
 
@@ -614,14 +633,15 @@
 <div class="coverage-grid">
 
   <div class="coverage-card">
-    <div class="cov-title">🟣 Module GEO — Visibilité IA</div>
-    <div class="cov-item"><span>Share of Voice</span><span class="cov-tag tag-native">Natif</span></div>
-    <div class="cov-item"><span>Sentiment</span><span class="cov-tag tag-native">Natif</span></div>
-    <div class="cov-item"><span>Geo (ventilation géo)</span><span class="cov-tag tag-native">Natif</span></div>
-    <div class="cov-item"><span>Source (domaines cités)</span><span class="cov-tag tag-native">Natif</span></div>
-    <div class="cov-item"><span>Cluster / Keywords</span><span class="cov-tag tag-native">Natif</span></div>
-    <div class="cov-item"><span>Concurrents dans les IA</span><span class="cov-tag tag-native">Natif</span></div>
-    <div class="cov-item"><span>Bot visits par page</span><span class="cov-tag tag-native">Natif</span></div>
+    <div class="cov-title">🟣 Module GEO — Intégration dashboards existants</div>
+    <div class="cov-item"><span>Connexion API / webhooks GEO</span><span class="cov-tag tag-api">Intégration</span></div>
+    <div class="cov-item"><span>Share of Voice</span><span class="cov-tag tag-api">Intégration</span></div>
+    <div class="cov-item"><span>Sentiment</span><span class="cov-tag tag-api">Intégration</span></div>
+    <div class="cov-item"><span>Geo (ventilation géo)</span><span class="cov-tag tag-api">Intégration</span></div>
+    <div class="cov-item"><span>Source (domaines cités)</span><span class="cov-tag tag-api">Intégration</span></div>
+    <div class="cov-item"><span>Cluster / Keywords</span><span class="cov-tag tag-api">Intégration</span></div>
+    <div class="cov-item"><span>Concurrents dans les IA</span><span class="cov-tag tag-api">Intégration</span></div>
+    <div class="cov-item"><span>Bot visits par page</span><span class="cov-tag tag-api">Intégration</span></div>
   </div>
 
   <div class="coverage-card">
@@ -646,8 +666,11 @@
   <div class="coverage-card">
     <div class="cov-title">🟢 Module Social Media</div>
     <div class="cov-item"><span>Publications (volume, contenu)</span><span class="cov-tag tag-api">API tierce</span></div>
-    <div class="cov-item"><span>Performance réseaux sociaux</span><span class="cov-tag tag-api">API tierce</span></div>
-    <div class="cov-item"><span>Tendances secteur ESR</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>Facebook / Instagram</span><span class="cov-tag tag-api">Meta Graph API</span></div>
+    <div class="cov-item"><span>LinkedIn</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>TikTok</span><span class="cov-tag tag-api">API tierce</span></div>
+    <div class="cov-item"><span>YouTube (vues, abonnés, vidéos)</span><span class="cov-tag tag-api">YouTube API v3</span></div>
+    <div class="cov-item"><span>Tendances secteur ESR</span><span class="cov-tag tag-api">Google Trends</span></div>
   </div>
 
 
